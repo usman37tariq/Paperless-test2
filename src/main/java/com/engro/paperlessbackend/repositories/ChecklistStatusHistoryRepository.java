@@ -1,0 +1,37 @@
+package com.engro.paperlessbackend.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.engro.paperlessbackend.entities.ChecklistSchedule;
+import com.engro.paperlessbackend.entities.ChecklistStatusHistory;
+import com.engro.paperlessbackend.entities.WorkflowLevel;
+
+@Repository
+public interface ChecklistStatusHistoryRepository extends JpaRepository<ChecklistStatusHistory, Integer> {
+
+	ChecklistStatusHistory findTop1ByChecklistScheduleOrderByStatusTimestampDesc(ChecklistSchedule checklistSchedule);
+
+	List<ChecklistStatusHistory> findByChecklistScheduleOrderByStatusTimestampAsc(ChecklistSchedule checklistSchedule);
+
+	List<ChecklistStatusHistory> findByChecklistScheduleAndWorkflowLevel(ChecklistSchedule checklistSchedule,
+			WorkflowLevel level);
+
+	ChecklistStatusHistory findTop1ByChecklistScheduleAndPreviousWorkflowLevelOrderByStatusTimestampDesc(
+			ChecklistSchedule checklistSchedule, WorkflowLevel workflowLevel);
+
+	ChecklistStatusHistory findTop1ByChecklistScheduleAndPreviousWorkflowLevelAndStatusTimestampLessThanOrderByStatusTimestampDesc(
+			ChecklistSchedule checklistSchedule, WorkflowLevel workflowLevel, long timestamp);
+
+	ChecklistStatusHistory findTop1ByChecklistScheduleAndPreviousWorkflowLevelAndStatusTimestampGreaterThanOrderByStatusTimestampAsc(
+			ChecklistSchedule checklistSchedule, WorkflowLevel wfLevel1, long statusTimestamp);
+
+	ChecklistStatusHistory findTop1ByChecklistScheduleAndPreviousWorkflowLevelAndStatusTimestampOrderByStatusTimestamp(
+			ChecklistSchedule checklistSchedule, WorkflowLevel workflowLevel, long timestamp);
+
+	ChecklistStatusHistory findTop1ByChecklistScheduleAndWorkflowLevelAndPreviousWorkflowLevelOrderByStatusTimestampDesc(
+			ChecklistSchedule checklistSchedule, WorkflowLevel workflowLevel, WorkflowLevel previousWorkflowLevel);
+
+}

@@ -1,0 +1,5 @@
+[com.engro.paperlessbackend.dao.PostgresDao.getAllTemplates(PostgresDao.java:156)evel] 2019-11-18 12:29:00.068 [http-nio-8081-exec-1] PostgresDao - [PostgresDao] - [getAllTemplates] - [Successful]sg
+[com.engro.paperlessbackend.dao.PostgresDao.getAllTemplates(PostgresDao.java:156)evel] 2019-11-18 12:29:35.649 [http-nio-8081-exec-1] PostgresDao - [PostgresDao] - [getAllTemplates] - [Successful]sg
+[com.engro.paperlessbackend.dao.PostgresDao.getAllTemplates(PostgresDao.java:156)evel] 2019-11-18 12:29:53.890 [http-nio-8081-exec-2] PostgresDao - [PostgresDao] - [getAllTemplates] - [Successful]sg
+[com.engro.paperlessbackend.dao.PostgresDao.getAllTemplates(PostgresDao.java:156)evel] 2019-11-18 12:32:53.627 [http-nio-8081-exec-1] PostgresDao - [PostgresDao] - [getAllTemplates] - [Successful]sg
+[com.engro.paperlessbackend.dao.PostgresDao.getAllTemplates(PostgresDao.java:156)evel] 2019-11-18 12:34:12.649 [http-nio-8081-exec-1] PostgresDao - [PostgresDao] - [getAllTemplates] - [Successful]sg

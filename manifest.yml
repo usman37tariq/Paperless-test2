@@ -1,0 +1,14 @@
+---
+applications:
+- name: paperless-backend-ms
+  path: target/paperless-backend-0.0.1-SNAPSHOT.jar
+  memory: 1024M
+  instances: 1
+  buildpack: java-buildpack
+  services:
+          - power-util-postgres 
+ 
+env:
+   SPRING_PROFILES_ACTIVE : cloud,clouddev
+  
+    
