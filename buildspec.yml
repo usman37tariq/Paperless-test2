@@ -8,7 +8,6 @@ phases:
     commands:
       - echo Nothing to do in the pre_build phase...
       - echo Logging in to Amazon ECR...
-       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - REPOSITORY_URI=422193507691.dkr.ecr.us-east-1.amazonaws.com/paperless-aws
@@ -28,3 +27,5 @@ artifacts:
   files:
     - target/*.jar
     - imagedefinitions.json
+    - appspec.yaml
+    - pulldocker
