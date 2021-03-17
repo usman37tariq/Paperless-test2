@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: openjdk8
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 422193507691.dkr.ecr.us-east-1.amazonaws.com
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn clean install
+      - docker build -t paperless-aws: latest.
+      - docker tag paperless-aws:latest 422193507691.dkr.ecr.us-east-1.amazonaws.com/paperless-aws:latest
+  post_build:
+    commands:
+      - echo Going to push docker image
+      - docker push 422193507691.dkr.ecr.us-east-1.amazonaws.com/paperless-aws:latest
+artifacts:
+  files:
+    - target/*.jar
