@@ -8,17 +8,23 @@ phases:
     commands:
       - echo Nothing to do in the pre_build phase...
       - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 422193507691.dkr.ecr.us-east-1.amazonaws.com)
+       - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - REPOSITORY_URI= 422193507691.dkr.ecr.us-east-1.amazonaws.com/paperless-aws
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
       - echo Build started on `date`
       - mvn clean install
-      - docker build -t paperless-aws:latest .
-      - docker tag paperless-aws:latest 422193507691.dkr.ecr.us-east-1.amazonaws.com/paperless-aws:latest
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Going to push docker image
-      - docker push 422193507691.dkr.ecr.us-east-1.amazonaws.com/paperless-aws:latest
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
 artifacts:
   files:
     - target/*.jar
