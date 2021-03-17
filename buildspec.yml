@@ -13,7 +13,7 @@ phases:
     commands:
       - echo Build started on `date`
       - mvn clean install
-      - docker build -t paperless-aws:latest.
+      - docker build -t paperless-aws:latest .
       - docker tag paperless-aws:latest 422193507691.dkr.ecr.us-east-1.amazonaws.com/paperless-aws:latest
   post_build:
     commands:
