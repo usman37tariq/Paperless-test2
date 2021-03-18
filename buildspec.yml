@@ -28,7 +28,7 @@ phases:
       
 artifacts:
   files:
-    - /home/ubuntu/artifacts/imagename.txt
+    - imagename.txt
     - imagedefinitions.json
     - appspec.yml
     - scripts/pulldocker.sh
