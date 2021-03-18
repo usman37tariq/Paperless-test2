@@ -3,6 +3,5 @@ os: linux
 hooks:	
   BeforeInstall:
   - location: pulldocker	   
-      timeout: 300	     
-      runas: root
-      
+      timeout:300	     
+      runas:root
