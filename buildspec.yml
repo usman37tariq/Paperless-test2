@@ -27,5 +27,5 @@ artifacts:
   files:
     - target/*.jar
     - imagedefinitions.json
-    - appspec.yaml
+    - appspec.yml
     - pulldocker
