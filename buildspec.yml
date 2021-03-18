@@ -11,10 +11,8 @@ phases:
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - REPOSITORY_URI=422193507691.dkr.ecr.us-east-1.amazonaws.com/paperless-aws
-      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
-      - echo Code Build Image Before = $CODEBUILD_BUILD_IMAGE
-      - $CODEBUILD_BUILD_IMAGE=$IMAGE_TAG
-      - echo Code Build Image After = $CODEBUILD_BUILD_IMAGE
+      - export IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+
   build:
     commands:
       - echo Build started on `date`
@@ -30,7 +28,6 @@ phases:
       
 artifacts:
   files:
-    - target/*.jar
     - imagedefinitions.json
     - appspec.yml
     - scripts/pulldocker.sh
