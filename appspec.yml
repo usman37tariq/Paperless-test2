@@ -2,6 +2,8 @@ version: 0.0
 os: linux
 hooks:	
   BeforeInstall:
+  - echo Starting docker pull
+  - echo $ IMAGE_TAG
   - location: scripts/pulldocker.sh	     
     timeout: 300	     
     runas: root
