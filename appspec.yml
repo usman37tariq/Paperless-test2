@@ -3,5 +3,3 @@ os: linux
 hooks:	
   BeforeInstall:
   - location: scripts/pulldocker.sh	     
-      timeout: 300	     
-      runas: root	     
