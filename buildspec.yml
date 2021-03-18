@@ -11,18 +11,21 @@ phases:
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
       - REPOSITORY_URI=422193507691.dkr.ecr.us-east-1.amazonaws.com/paperless-aws
-
+      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+      - $CODEBUILD_BUILD_IMAGE= $IMAGE_TAG
   build:
     commands:
       - echo Build started on `date`
       - mvn clean install
-      - docker build -t $REPOSITORY_URI:latest .
+      - docker build -t $REPOSITORY_URI:$IMAGE_TAG .
   post_build:
     commands:
       - echo Going to push docker image
-      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"paperless-aws","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
+      - printf '[{"name":"paperless-aws","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - echo build image name $CODEBUILD_BUILD_IMAGE
+      
 artifacts:
   files:
     - target/*.jar
