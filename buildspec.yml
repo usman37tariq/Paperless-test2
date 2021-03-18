@@ -28,4 +28,4 @@ artifacts:
     - target/*.jar
     - imagedefinitions.json
     - appspec.yml
-    - scripts/pulldocker
+    - scripts/pulldocker.sh
