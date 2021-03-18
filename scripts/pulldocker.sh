@@ -1,1 +1,2 @@
-sudo docker pull 422193507691.dkr.ecr.us-east-1.amazonaws.com/paperless-aws:latest
+IMAGE_NAME=$(head -n 1 /home/ubuntu/artifacts/imagename.txt)
+sudo docker pull $IMAGE_NAME
