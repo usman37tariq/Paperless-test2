@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-- source: /
-  destination: /home/ubuntu/artifacts
+  - source: /
+    destination: /home/ubuntu/artifacts
 hooks:	
   BeforeInstall:
   - location: scripts/pulldocker.sh	     
