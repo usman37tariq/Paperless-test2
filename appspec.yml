@@ -2,6 +2,6 @@ version: 0.0
 os: linux
 hooks:	
   BeforeInstall:
-  - location: pulldocker	   
+  - location: scripts/pulldocker	   
       timeout:300	     
       runas:root
