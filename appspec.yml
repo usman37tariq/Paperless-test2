@@ -1,9 +1,9 @@
 version: 0.0
-Resources: 
- - TargetService: 
-    Type: AWS::ECS::Service 
-    Properties: 
-     TaskDefinition: "arn:aws:ecs:us-east-1:422193507691:task-definition/paperless-backend:7" 
-     LoadBalancerinfo: 
-      ContainerName: "paperless" 
-      ContainerPort: 9092 
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:422193507691:task-definition/paperless-backend:7" 
+        LoadBalancerInfo:
+          ContainerName: "totd-api"
+          ContainerPort: 80
