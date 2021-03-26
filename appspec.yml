@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: <TASK_DEFINITION>
+        TaskDefinition: "arn:aws:ecs:us-east-1:422193507691:task-definition/paperless-backend:8"
         LoadBalancerInfo:
           ContainerName: "paperless"
           ContainerPort: 9092
