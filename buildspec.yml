@@ -31,4 +31,5 @@ artifacts:
     - imagename.txt
     - imageDetail.json
     - appspec.yml
+    - taskdef.json
     - scripts/pulldocker.sh
