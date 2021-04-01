@@ -24,7 +24,7 @@ phases:
       - echo Going to push docker image
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"dl-paperless-backend-preprod","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"paperless-backend-preprod","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - printf '%s' $REPOSITORY_URI:$IMAGE_TAG > imagename.txt
       
 artifacts:
